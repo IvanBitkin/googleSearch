@@ -2,9 +2,10 @@ package com.base.objects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.SendKeysAction;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.pages.SearchPage;
 
 public abstract class AbstractBasePage {
 	
@@ -46,27 +47,14 @@ public abstract class AbstractBasePage {
 
 	}
 
-	protected String waitAndGetText(WebElement element) {
-
-		try {
-			Thread.sleep(2500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return waitForElementToBeDisplayed(element).getText();
-
+	public SearchPage backToSearchPage() {
+		
+		driver.navigate().back();
+		return new SearchPage(driver);
+		
 	}
 
-	protected String waitAndGetAttribute(WebElement element, String attribute) {
-
-		try {
-			Thread.sleep(2500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		return waitForElementToBeDisplayed(element).getAttribute(attribute);
-
-	}
+	
 	
 	
 

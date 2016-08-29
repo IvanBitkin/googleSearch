@@ -9,11 +9,10 @@ import com.base.objects.AbstractBasePage;
 
 public class SearchPage extends AbstractBasePage {
 
-	@FindBy(xpath = "//div[@id='rso']/div/div[1]/div/h3/a")
-	private WebElement checklink1;
-	@FindBy(xpath = "//div[@id='rso']/div/div[2]/div/h3/a")
-	private WebElement checklink2;
-	
+	@FindBy(xpath = "//div[@id='rso']//div/h3/a[@href='http://gatonegrohandmade.com.ua/']")
+	private WebElement gatonegrohandmadeLink;
+	@FindBy(xpath = "//*[@id='rso']/div//h3/a[@href='http://gatonegro.cl/']")
+	private WebElement gatonegroLink;
 
 	public SearchPage(WebDriver driver) {
 
@@ -22,20 +21,18 @@ public class SearchPage extends AbstractBasePage {
 
 	}
 
-	public String getLink1() {
-		
-		waitAndCheck(checklink1);
-		return checklink1.getAttribute("href");
+	public GatonegrohandmadePage clickOnGatonegrohandmadeButton() {
+
+		waitAndClick(gatonegrohandmadeLink);
+		return new GatonegrohandmadePage(driver);
 
 	}
-
-	public String getLink2() {
-		
-		waitAndCheck(checklink2);
-		return checklink2.getAttribute("href");
-
-	}
-
 	
+	public GatonegroPage clickOnGatoNegroButton() {
+		
+		waitAndClick(gatonegroLink);
+		return new GatonegroPage(driver);
+		
+	}
 
 }
